@@ -7,30 +7,25 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -W -Werror -pedantic -I include/
+CFLAGS	=	-Wall -Wextra -W -Werror -pedantic
+CFLAGS	=	-I include/ -lcsfml-graphics -lcsfml-window -lcsfml-system
 
-LIB	=	-L lib/my -lmy
-
-SRC	=	sources_a_la_racine.c
+SRC	=	my_hunter.c
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	nom_de_l_executable
+NAME	=	my_hunter
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C ./lib/my/
 	$(CC) $(OBJ) $(CFLAGS) $(LIB) -o $(NAME)
 	rm -f $(OBJ)
-	make clean -C ./lib/my/
 
 clean:
 	rm -f $(OBJ)
-	make clean -C ./lib/my/
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./lib/my/
 
 re: fclean all
