@@ -9,6 +9,7 @@
 #include <SFML/Window.h>
 #include <SFML/System/Vector2.h>
 #include <SFML/Audio.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,6 +17,7 @@ void close_window(sfRenderWindow *window)
 {
 	sfRenderWindow_close(window);
 }
+
 void manage_mouse_click(sfMouseButtonEvent event)
 {
 	printf("Mouse x=%d y=%d\n", event.x, event.y);
@@ -49,6 +51,9 @@ sfText *set_text(char *str, sfVector2f pos, sfFont *font, int size)
 
 int main(void)
 {
+	sfVector2f position;
+	position.x = -110;
+	position.y = 330;
 	sfVideoMode mode = {1980, 1080, 32};
 	sfRenderWindow* window;
 	sfEvent event;
@@ -57,27 +62,77 @@ int main(void)
 	//TEXT
 	sfFont *font = sfFont_createFromFile("src/font/arial.ttf");
 
-	sfVector2f pos_score = {50, 800};
+	sfVector2f pos_score = {1600, 875};
 	sfText *score = set_text("Score", pos_score, font, 50);
 
-	sfVector2f pos_nbr_score = {50, 850};
+	sfVector2f pos_nbr_score = {1600, 925};
 	sfText *nbr_score = set_text("000", pos_nbr_score, font, 50);
 
-	sfVector2f pos_hp = {1720, 800};
-	sfText *hp = set_text("HP", pos_hp, font, 50);
+	//DIALOGUES & WALLPAPER MENU
+	sfSprite *sprite_wallpaper_menu = sfSprite_create();
+	sfTexture *texture_wallpaper_menu = sfTexture_createFromFile("src/img/wallpaper_menu.png", NULL);
+	sfSprite_setTexture(sprite_wallpaper_menu, texture_wallpaper_menu, sfTrue);
+	sfVector2f pos_wallpaper_menu = {0, 0};
 
-	sfVector2f pos_nbr_hp = {1720, 850};
-	sfText *nbr_hp = set_text("25", pos_nbr_hp, font, 50);
+	sfSprite *sprite_dialogue_warren_1 = sfSprite_create();
+	sfTexture *texture_dialogue_warren_1 = sfTexture_createFromFile("src/img/dialogue_warren_1.png", NULL);
+	sfVector2f pos_dialogue_warren_1 = {540, 300};
+	sfSprite_setTexture(sprite_dialogue_warren_1, texture_dialogue_warren_1, sfTrue);
 
 	//TEXTURES
 	sfSprite *sprite_duck = sfSprite_create();
 	sfTexture *texture_duck = sfTexture_createFromFile("src/img/spritesheet.png", NULL);
 	sfSprite_setTexture(sprite_duck, texture_duck, sfTrue);
+	sfVector2f pos_duck = {100, 100};
 
+	sfSprite *sprite_bar = sfSprite_create();
+	sfTexture *texture_bar = sfTexture_createFromFile("src/img/bar.png", NULL);
+	sfSprite_setTexture(sprite_bar, texture_bar, sfTrue);
+	sfVector2f pos_bar = {0, 990};
+
+	sfSprite *sprite_warren = sfSprite_create();
+	sfTexture *texture_warren = sfTexture_createFromFile("src/img/warren.png", NULL);
+	sfSprite_setTexture(sprite_warren, texture_warren, sfTrue);
+	sfVector2f pos_warren = {50, 743};
+
+
+	//LIFE
+	sfSprite *sprite_life0 = sfSprite_create();
+	sfTexture *texture_life0 = sfTexture_createFromFile("src/img/life/life0.png", NULL);
+	sfSprite_setTexture(sprite_life0, texture_life0, sfTrue);
+	sfSprite *sprite_life1 = sfSprite_create();
+	sfTexture *texture_life1 = sfTexture_createFromFile("src/img/life/life1.png", NULL);
+	sfSprite_setTexture(sprite_life1, texture_life1, sfTrue);
+	sfSprite *sprite_life2 = sfSprite_create();
+	sfTexture *texture_life2 = sfTexture_createFromFile("src/img/life/life2.png", NULL);
+	sfSprite_setTexture(sprite_life2, texture_life2, sfTrue);
+	sfSprite *sprite_life3 = sfSprite_create();
+	sfTexture *texture_life3 = sfTexture_createFromFile("src/img/life/life3.png", NULL);
+	sfSprite_setTexture(sprite_life3, texture_life3, sfTrue);
+	sfSprite *sprite_life4 = sfSprite_create();
+	sfTexture *texture_life4 = sfTexture_createFromFile("src/img/life/life4.png", NULL);
+	sfSprite_setTexture(sprite_life4, texture_life4, sfTrue);
+	sfSprite *sprite_life5 = sfSprite_create();
+	sfTexture *texture_life5 = sfTexture_createFromFile("src/img/life/life5.png", NULL);
+	sfSprite_setTexture(sprite_life5, texture_life5, sfTrue);
+	sfSprite *sprite_life6 = sfSprite_create();
+	sfTexture *texture_life6 = sfTexture_createFromFile("src/img/life/life6.png", NULL);
+	sfSprite_setTexture(sprite_life6, texture_life6, sfTrue);
+	sfVector2f pos_life = {1600, 1010};
+
+	//PAUSE
+	sfSprite *sprite_pause_off = sfSprite_create();
+	sfTexture *texture_pause_off = sfTexture_createFromFile("src/img/skill/pause_off.png", NULL);
+	sfSprite_setTexture(sprite_pause_off, texture_pause_off, sfTrue);
+	sfSprite *sprite_pause_on = sfSprite_create();
+	sfTexture *texture_pause_on = sfTexture_createFromFile("src/img/skill/pause_on.png", NULL);
+	sfSprite_setTexture(sprite_pause_on, texture_pause_on, sfTrue);
+	sfVector2f pos_pause = {915, 1000};
+
+	//WALLPAPER
 	sfSprite *sprite_wallpaper = sfSprite_create();
 	sfTexture *texture_wallpaper = sfTexture_createFromFile("src/img/wallpaper.jpg", NULL);
 	sfSprite_setTexture(sprite_wallpaper, texture_wallpaper, sfTrue);
-	sfVector2f pos_duck = {0, 0};
 
 	//CLOCK
 	sfClock *clock;
@@ -93,27 +148,51 @@ int main(void)
 		while (sfRenderWindow_pollEvent(window, &event)) {
 			analyse_events(window, event);
 		}
+		if (seconds > 0.017)
+			position.x += 0.9;
+		position.y = 100 + asinf(seconds);
+		if (seconds > 0.1) {
+			move_rect(&rect, 110, 330);
+			sfClock_restart(clock);
+		}
 		sfRenderWindow_drawSprite(window, sprite_wallpaper, NULL);
+
 		sfRenderWindow_drawSprite(window, sprite_duck, NULL);
 		sfSprite_setTextureRect(sprite_duck, rect);
 		sfSprite_setPosition(sprite_duck, pos_duck);
 
+		sfRenderWindow_drawSprite(window, sprite_bar, NULL);
+		sfSprite_setPosition(sprite_bar, pos_bar);
+
+		sfRenderWindow_drawSprite(window, sprite_pause_on, NULL);
+		sfSprite_setPosition(sprite_pause_on, pos_pause);
+
+		sfRenderWindow_drawSprite(window, sprite_life4, NULL);
+		sfSprite_setPosition(sprite_life4, pos_life);
+
+		sfRenderWindow_drawSprite(window, sprite_warren, NULL);
+		//sfSprite_setTextureRect(sprite_warren, rect);
+		sfSprite_setPosition(sprite_warren, pos_warren);
+
 		sfRenderWindow_drawText(window, score, NULL);
 		sfRenderWindow_drawText(window, nbr_score, NULL);
-		sfRenderWindow_drawText(window, hp, NULL);
-		sfRenderWindow_drawText(window, nbr_hp, NULL);
+
+		sfRenderWindow_drawSprite(window, sprite_wallpaper_menu, NULL);
+		sfSprite_setPosition(sprite_wallpaper_menu, pos_wallpaper_menu);
+		sfRenderWindow_drawSprite(window, sprite_dialogue_warren_1, NULL);
+		sfSprite_setPosition(sprite_dialogue_warren_1, pos_dialogue_warren_1);
+		if (event.type == sfEvtMouseButtonPressed) {
+			sfSprite_destroy(sprite_wallpaper_menu);
+			sfTexture_destroy(texture_wallpaper_menu);
+			sfSprite_destroy(sprite_dialogue_warren_1);
+			sfTexture_destroy(texture_dialogue_warren_1);
+		}
 
 		sfRenderWindow_display(window);
-		if (seconds > 0.5) {
-			move_rect(&rect, 110, 330);
-			sfClock_restart(clock);
-		}
 	}
 	sfRenderWindow_destroy(window);
 	sfText_destroy(score);
 	sfText_destroy(nbr_score);
-	sfText_destroy(hp);
-	sfText_destroy(nbr_hp);
 	sfFont_destroy(font);
 	sfSprite_destroy(sprite_duck);
 	sfSprite_destroy(sprite_wallpaper);
