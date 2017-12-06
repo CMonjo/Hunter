@@ -8,7 +8,7 @@
 CC	=	gcc
 
 CFLAGS	=	-Wall -Wextra -W -Werror -pedantic
-CFLAGS	=	-I include/ -lcsfml-graphics -lcsfml-window -lcsfml-system -lm
+CFLAGS	=	-I include/ -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lm
 
 SRC	=	my_hunter.c
 
