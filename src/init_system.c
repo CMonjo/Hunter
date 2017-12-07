@@ -7,14 +7,18 @@
 
 #include "hunter.h"
 
-void init_sprite_system_2(win_t *sys)
+void init_sprite_system_second(win_t *sys)
 {
 	sys->sprite->recept = sfSprite_create();
 	sys->texture->recept = sfTexture_createFromFile("assets/img/characters/recept.png", NULL);
 	sys->pos->recept.x = 1780;
 	sys->pos->recept.y = 760;
 	sfSprite_setTexture(sys->sprite->recept, sys->texture->recept, sfTrue);
-	//ADD LIFE AND SKILL PAUSE
+	sys->sprite->life = sfSprite_create();
+	sys->texture->life = sfTexture_createFromFile("assets/img/HUD/life.png", NULL);
+	sys->pos->life.x = 1600;
+	sys->pos->life.y = 998;
+	sfSprite_setTexture(sys->sprite->life, sys->texture->life, sfTrue);
 }
 void init_sprite_system(win_t *sys)
 {
@@ -34,7 +38,7 @@ void init_sprite_system(win_t *sys)
 	sys->sprite->HUD_warren = sfSprite_create();
 	sys->texture->HUD_warren = sfTexture_createFromFile("assets/img/HUD/HUD_warren.png", NULL);
 	sys->pos->HUD_warren.x = 50;
-	sys->pos->HUD_warren.y = 743;
+	sys->pos->HUD_warren.y = 715;
 	sfSprite_setTexture(sys->sprite->HUD_warren, sys->texture->HUD_warren, sfTrue);
-	init_sprite_system_2(sys);
+	init_sprite_system_second(sys);
 }

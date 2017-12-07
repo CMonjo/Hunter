@@ -7,37 +7,41 @@
 
 #include "hunter.h"
 
-void init_rect(win_t *sys)
+void init_rect_second(win_t *sys)
 {
-	sys->rect->HUD_warren.left = 0;
-	sys->rect->HUD_warren.top = 0;
-	sys->rect->HUD_warren.width = 150;
-	sys->rect->HUD_warren.height = 247;
-
-	sys->rect->pata.left = 0;
-	sys->rect->pata.top = 0;
-	sys->rect->pata.width = 80;
-	sys->rect->pata.height = 107;
-
-	sys->rect->warren.left = 0;
-	sys->rect->warren.top = 0;
-	sys->rect->warren.width = 80;
-	sys->rect->warren.height = 113;
-
 	sys->rect->woman_1.left = 0;
 	sys->rect->woman_1.top = 0;
 	sys->rect->woman_1.width = 80;
 	sys->rect->woman_1.height = 125;
-
 	sys->rect->woman_2.left = 0;
 	sys->rect->woman_2.top = 0;
 	sys->rect->woman_2.width = 80;
 	sys->rect->woman_2.height = 136;
-
 	sys->rect->max_pata = 428;
 	sys->rect->max_warren = 452;
 	sys->rect->max_woman_1 = 500;
 	sys->rect->max_woman_2 = 544;
+	sys->rect->max_HUD_warren = 564;
+}
+void init_rect(win_t *sys)
+{
+	sys->rect->HUD_warren.left = 0;
+	sys->rect->HUD_warren.top = 0;
+	sys->rect->HUD_warren.width = 188;
+	sys->rect->HUD_warren.height = 275;
+	sys->rect->life.left = 0;
+	sys->rect->life.top = 294;
+	sys->rect->life.width = 200;
+	sys->rect->life.height = 49;
+	sys->rect->pata.left = 0;
+	sys->rect->pata.top = 0;
+	sys->rect->pata.width = 80;
+	sys->rect->pata.height = 107;
+	sys->rect->warren.left = 0;
+	sys->rect->warren.top = 0;
+	sys->rect->warren.width = 80;
+	sys->rect->warren.height = 113;
+	init_rect_second(sys);
 }
 
 void init_sprite_chracters(win_t *sys)
@@ -51,7 +55,6 @@ void init_sprite_chracters(win_t *sys)
 	sys->texture->warren = sfTexture_createFromFile("assets/img/characters/warren.png", NULL);
 	sys->pos->warren.x = -150;
 	sys->pos->warren.y = 380;
-	sfSprite_setTexture(sys->sprite->warren, sys->texture->warren, sfTrue);
 	sfSprite_setTexture(sys->sprite->warren, sys->texture->warren, sfTrue);
 	sys->sprite->woman_1 = sfSprite_create();
 	sys->texture->woman_1 = sfTexture_createFromFile("assets/img/characters/woman_1.png", NULL);

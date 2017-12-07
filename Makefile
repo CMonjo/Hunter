@@ -10,12 +10,16 @@ CC	=	gcc
 CFLAGS	=	-Wall -Wextra -W -Werror
 CFLAGS	+=	-I include/ -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lm
 
-SRC	=	my_hunter.c	\
-		init_system.c	\
-		move_sprite.c	\
-		init_sprite.c	\
-		sfrender.c	\
-		hitbox.c
+SRC	=	src/my_hunter.c		\
+		src/init_system.c	\
+		src/move_sprite.c	\
+		src/init_sprite.c	\
+		src/sfrender.c		\
+		src/story.c		\
+		src/my_putstr.c		\
+		src/my_putchar.c	\
+		src/life_management.c	\
+		src/hitbox.c
 
 OBJ	=	$(SRC:.c=.o)
 

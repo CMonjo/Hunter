@@ -16,16 +16,15 @@ typedef struct sprite_s {
 	sfSprite *mouse;
 	sfSprite *HUD_warren;
 	sfSprite *recept;
-	sfSprite *pause_off;
-	sfSprite *pause_on;
 	sfSprite *pata;
 	sfSprite *warren;
+	sfSprite *warren_z;
+	sfSprite *warren_s;
+	sfSprite *warren_q;
 	sfSprite *woman_1;
 	sfSprite *woman_2;
-	sfSprite *sprite_life;
-	//sfSprite *background_menu;
-	//sfSprite *dialogue_warren_1;
-
+	sfSprite *life;
+	sfSprite *dial_end;
 }sprite_t;
 
 typedef struct texture_s {
@@ -36,25 +35,30 @@ typedef struct texture_s {
 	sfTexture *recept;
 	sfTexture *pata;
 	sfTexture *warren;
+	sfTexture *warren_z;
+	sfTexture *warren_s;
+	sfTexture *warren_q;
 	sfTexture *woman_1;
 	sfTexture *woman_2;
-	sfTexture *pause_off;
-	sfTexture *pause_on;
 	sfTexture *life;
-	//sfTexture *background_menu;
-	//sfTexture *dialogue_warren_1;
+	sfTexture *dial_end;
 }texture_t;
 
 typedef struct rect_s {
 	sfIntRect HUD_warren;
 	sfIntRect pata;
 	sfIntRect warren;
+	sfIntRect warren_z;
+	sfIntRect warren_s;
+	sfIntRect warren_q;
 	sfIntRect woman_1;
 	sfIntRect woman_2;
+	sfIntRect life;
 	int max_pata;
 	int max_warren;
 	int max_woman_1;
 	int max_woman_2;
+	int max_HUD_warren;
 }rect_t;
 
 typedef struct position_s {
@@ -64,12 +68,15 @@ typedef struct position_s {
 	sfVector2f mouse;
 	sfVector2f HUD_warren;
 	sfVector2f recept;
-	sfVector2f pause;
 	sfVector2f pata;
 	sfVector2f warren;
+	sfVector2f warren_z;
+	sfVector2f warren_s;
+	sfVector2f warren_q;
 	sfVector2f woman_1;
 	sfVector2f woman_2;
 	sfVector2f life;
+	sfVector2f dial_end;
 }position_t;
 
 typedef struct win_s {

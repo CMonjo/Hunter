@@ -7,14 +7,6 @@
 
 #include "hunter.h"
 
-void my_destroy(win_t *sys)
-{
-	sfSprite_destroy(sys->sprite->background);
-	sfTexture_destroy(sys->texture->background);
-	sfMusic_destroy(sys->music);
-	sfRenderWindow_destroy(sys->win);
-}
-
 void analyse_events(win_t *sys)
 {
 	while (sfRenderWindow_pollEvent(sys->win, &(sys->event))) {
@@ -30,7 +22,6 @@ void analyse_events(win_t *sys)
 			sys->pos->mouse.x = sys->event.mouseMove.x - 21;
 			sys->pos->mouse.y = sys->event.mouseMove.y - 21;
 		}
-		//FAIRE UN IF SI ON APPUIE SUR ""&1" POUR METTRE LE SKILL PAUSE EN ROUGE ET SLOW LE TIME
 	}
 }
 
@@ -55,24 +46,43 @@ void init_window(win_t *sys)
 	sys->rect = malloc(sizeof(rect_t));
 	init_sprite_system(sys);
 	init_sprite_chracters(sys);
+	init_sprite_dial(sys);
 	init_rect(sys);
 }
 
-int main(void)
+void my_window(win_t *sys)
 {
-	win_t *sys = malloc(sizeof(win_t));
-
 	init_window(sys);
 	sfMusic_play(sys->music);
 	sfRenderWindow_setMouseCursorVisible(sys->win, sfFalse);
 	while (sfRenderWindow_isOpen(sys->win)) {
+		// if (sys->rect->life.top == 0)
+		// 	my_end_story(sys);
 		sys->time = sfClock_getElapsedTime(sys->clock);
 		sys->seconds = sys->time.microseconds / 1000000.0;
 		if (sys->seconds > 0.05)
 			my_clock(sys);
-		analyse_events(sys);
+		//sfRenderWindow_clear(sys->win, sfBlack);
 		sfrender_system(sys);
+		analyse_events(sys);
 	}
-	my_destroy(sys);
+}
+
+int main(int ac, char **av)
+{
+	win_t *sys = malloc(sizeof(win_t));
+
+	if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h') {
+		my_putstr("The goal of the game is...\n");
+		return (0);
+	}
+	else if (ac >= 2) {
+		my_putstr("You must type './my_hunter' for start the game\n");
+		my_putstr("If you need more informations ");
+		my_putstr("type './my_hunter -h'\n");
+		return (84);
+	}
+	else
+		my_window(sys);
 	return (0);
 }

@@ -13,6 +13,10 @@ void sfrender_HUD(win_t *sys)
 	sfSprite_setPosition(sys->sprite->bar, sys->pos->bar);
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->HUD_warren, NULL);
 	sfSprite_setPosition(sys->sprite->HUD_warren, sys->pos->HUD_warren);
+	sfSprite_setTextureRect(sys->sprite->HUD_warren, sys->rect->HUD_warren);
+	sfRenderWindow_drawSprite(sys->win, sys->sprite->life, NULL);
+	sfSprite_setPosition(sys->sprite->life, sys->pos->life);
+	sfSprite_setTextureRect(sys->sprite->life, sys->rect->life);
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->mouse, NULL);
 	sfSprite_setPosition(sys->sprite->mouse, sys->pos->mouse);
 	sfRenderWindow_display(sys->win);

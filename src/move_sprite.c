@@ -14,8 +14,10 @@ void move_spirte_pata(win_t *sys)
 	else
 		sys->rect->pata.top += sys->rect->pata.height;
 	sys->pos->pata.y += 10;
-	if (sys->pos->pata.y >= 1090)
+	if (sys->pos->pata.y >= 1090) {
+		my_life_first(sys);
 		sys->pos->pata.y = -150;
+	}
 }
 
 void move_spirte_warren(win_t *sys)
@@ -25,8 +27,9 @@ void move_spirte_warren(win_t *sys)
 	else
 		sys->rect->warren.top += sys->rect->warren.height;
 	sys->pos->warren.x += 10;
-	if (sys->pos->warren.x >= 1990)
+	if (sys->pos->warren.x >= 1990) {
 		sys->pos->warren.x = -150;
+	}
 }
 
 void move_spirte_woman_1(win_t *sys)
@@ -36,8 +39,10 @@ void move_spirte_woman_1(win_t *sys)
 	else
 		sys->rect->woman_1.top += sys->rect->woman_1.height;
 	sys->pos->woman_1.x += -10;
-	if (sys->pos->woman_1.x <= -100)
+	if (sys->pos->woman_1.x <= -100) {
+		my_life_first(sys);
 		sys->pos->woman_1.x = 1990;
+	}
 }
 
 void move_spirte_woman_2(win_t *sys)
@@ -47,6 +52,8 @@ void move_spirte_woman_2(win_t *sys)
 	else
 		sys->rect->woman_2.top += sys->rect->woman_2.height;
 	sys->pos->woman_2.y += -10;
-	if (sys->pos->woman_2.y <= -150)
+	if (sys->pos->woman_2.y <= -150) {
+		my_life_first(sys);
 		sys->pos->woman_2.y = 1150;
+	}
 }
