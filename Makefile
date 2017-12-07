@@ -7,10 +7,15 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -W -Werror -pedantic
-CFLAGS	=	-I include/ -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lm
+CFLAGS	=	-Wall -Wextra -W -Werror
+CFLAGS	+=	-I include/ -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lm
 
-SRC	=	my_hunter.c
+SRC	=	my_hunter.c	\
+		init_system.c	\
+		move_sprite.c	\
+		init_sprite.c	\
+		sfrender.c	\
+		hitbox.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -19,7 +24,7 @@ NAME	=	my_hunter
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) $(LIB) -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 	rm -f $(OBJ)
 
 clean:
