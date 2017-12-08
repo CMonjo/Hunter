@@ -10,8 +10,11 @@
 void analyse_events(win_t *sys)
 {
 	while (sfRenderWindow_pollEvent(sys->win, &(sys->event))) {
-		if (sys->event.type == sfEvtClosed)
+		if (sys->event.type == sfEvtClosed) {
 			sfRenderWindow_close(sys->win);
+			my_score_end(sys);
+			my_destroy(sys);
+		}
 		if (sys->event.type == sfEvtMouseButtonPressed) {
 			hitbox_pata(sys);
 			hitbox_warren(sys);
@@ -68,15 +71,15 @@ void my_window(win_t *sys)
 	sfRenderWindow_setMouseCursorVisible(sys->win, sfFalse);
 	while (sfRenderWindow_isOpen(sys->win)) {
 		my_begin_story(sys);
-		analyse_events(sys);
 		sys->time = sfClock_getElapsedTime(sys->clock);
 		sys->seconds = sys->time.microseconds / 1000000.0;
 		if (sys->rect->life.top != 0)
 			sfrender_system(sys);
 		else
 			my_end_story(sys);
-		if (sys->seconds > 0.05)
+		if (sys->seconds > 0.04)
 			my_clock(sys);
+		analyse_events(sys);
 		sfRenderWindow_clear(sys->win, sfBlack);
 	}
 }
@@ -86,7 +89,12 @@ int main(int ac, char **av)
 	win_t *sys = malloc(sizeof(win_t));
 
 	if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h') {
-		my_putstr("The goal of the game is...\n");
+		my_putstr("The goal of the game is to kill all the bad ");
+		my_putstr("guys!\nWARNING ! Do not kill little Warren...\n");
+		my_putstr("Everything will be explained at the beginning!\n");
+		my_putstr("You have 6 lifes, ");
+		my_putstr("if one of the bad guys cross the screen or if ");
+		my_putstr("you kill a little warren, you will lose a life\n");
 		return (0);
 	}
 	else if (ac >= 2) {

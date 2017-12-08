@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
+
 int main(int ac, char **av);
 int my_putstr(char const *str);
 void my_putchar(char c);
@@ -57,4 +58,5 @@ void my_end_story_second(win_t *sys);
 void my_begin_story(win_t *sys);
 int my_begin_end_story(win_t *sys);
 int my_put_nbr(int nb);
+void my_score_end(win_t *sys);
 #endif

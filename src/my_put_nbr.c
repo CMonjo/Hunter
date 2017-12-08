@@ -1,18 +1,16 @@
 /*
 ** EPITECH PROJECT, 2017
-** c
+** Putnbrr
 ** File description:
-**
+** Putnbr
 */
 
-#include <unistd.h>
-
-//void	my_putchar(char c);
+#include "hunter.h"
 
 int my_put_nbr(int nb)
 {
-	int	right;
-	int	left;
+	int right;
+	int left;
 
 	if (nb == -2147483648) {
 		write(1, "-2147483648", 11);

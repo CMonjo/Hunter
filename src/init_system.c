@@ -16,7 +16,7 @@ void init_sprite_system_second(win_t *sys)
 	sfSprite_setTexture(sys->sprite->recept, sys->texture->recept, sfTrue);
 	sys->sprite->life = sfSprite_create();
 	sys->texture->life = sfTexture_createFromFile("assets/img/HUD/life.png", NULL);
-	sys->pos->life.x = 1600;
+	sys->pos->life.x = 670;
 	sys->pos->life.y = 998;
 	sfSprite_setTexture(sys->sprite->life, sys->texture->life, sfTrue);
 }
