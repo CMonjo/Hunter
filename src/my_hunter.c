@@ -48,7 +48,8 @@ void init_window(win_t *sys)
 	sfVideoMode mode = {1980, 1080, 32};
 	sys->clock = sfClock_create();
 	sys->music_warren = sfMusic_createFromFile("assets/music/warren.ogg");
-	sys->music_warren_second = sfMusic_createFromFile("assets/music/warren_second.ogg");
+	sys->music_warren_second =
+	sfMusic_createFromFile("assets/music/warren_second.ogg");
 	sys->music_pata = sfMusic_createFromFile("assets/music/pata.ogg");
 	sys->music = sfMusic_createFromFile("assets/music/final.wav");
 	sys->win = sfRenderWindow_create(mode, "MyHunter", sfResize | sfClose, NULL);
