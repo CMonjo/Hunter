@@ -8,7 +8,9 @@
 CC	=	gcc
 
 CFLAGS	=	-Wall -Wextra -W -Werror
-CFLAGS	+=	-I include/ -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system -lm
+CFLAGS	+=	-I include/ -lc_graph_prog -lm
+
+CFLAGST	=	-lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system
 
 SRC	=	src/my_hunter.c		\
 		src/init_system.c	\
@@ -19,6 +21,7 @@ SRC	=	src/my_hunter.c		\
 		src/my_putstr.c		\
 		src/my_putchar.c	\
 		src/life_management.c	\
+		src/my_put_nbr.c	\
 		src/hitbox.c
 
 OBJ	=	$(SRC:.c=.o)
@@ -38,3 +41,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+test: $(OBJ)
+	$(CC) $(OBJ) $(CFLAGST) -o $(NAME)
+	rm -f $(OBJ)

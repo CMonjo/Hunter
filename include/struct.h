@@ -24,7 +24,12 @@ typedef struct sprite_s {
 	sfSprite *woman_1;
 	sfSprite *woman_2;
 	sfSprite *life;
-	sfSprite *dial_end;
+	sfSprite *dial_start;
+	sfSprite *dial_info;
+	sfSprite *dial_pata;
+	sfSprite *dial_universe;
+	sfSprite *dial_lost;
+	sfSprite *bg_menu;
 }sprite_t;
 
 typedef struct texture_s {
@@ -41,7 +46,12 @@ typedef struct texture_s {
 	sfTexture *woman_1;
 	sfTexture *woman_2;
 	sfTexture *life;
-	sfTexture *dial_end;
+	sfTexture *dial_start;
+	sfTexture *dial_info;
+	sfTexture *dial_pata;
+	sfTexture *dial_universe;
+	sfTexture *dial_lost;
+	sfTexture *bg_menu;
 }texture_t;
 
 typedef struct rect_s {
@@ -58,6 +68,9 @@ typedef struct rect_s {
 	int max_warren;
 	int max_woman_1;
 	int max_woman_2;
+	int max_warren_z;
+	int max_warren_s;
+	int max_warren_q;
 	int max_HUD_warren;
 }rect_t;
 
@@ -76,7 +89,11 @@ typedef struct position_s {
 	sfVector2f woman_1;
 	sfVector2f woman_2;
 	sfVector2f life;
-	sfVector2f dial_end;
+	sfVector2f dial_start;
+	sfVector2f dial_info;
+	sfVector2f dial_pata;
+	sfVector2f dial_universe;
+	sfVector2f dial_lost;
 }position_t;
 
 typedef struct win_s {
@@ -86,6 +103,11 @@ typedef struct win_s {
 	sfTime time;
 	float seconds;
 	sfMusic *music;
+	sfMusic *music_warren;
+	sfMusic *music_pata;
+	sfMusic *music_warren_second;
+	int key;
+	int score;
 	sprite_t *sprite;
 	texture_t *texture;
 	position_t *pos;

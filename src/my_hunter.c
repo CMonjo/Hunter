@@ -17,6 +17,9 @@ void analyse_events(win_t *sys)
 			hitbox_warren(sys);
 			hitbox_woman_1(sys);
 			hitbox_woman_2(sys);
+			hitbox_warren_s(sys);
+			hitbox_warren_q(sys);
+			hitbox_warren_z(sys);
 		}
 		if (sys->event.type == sfEvtMouseMoved) {
 			sys->pos->mouse.x = sys->event.mouseMove.x - 21;
@@ -27,10 +30,13 @@ void analyse_events(win_t *sys)
 
 void my_clock(win_t *sys)
 {
-	move_spirte_pata(sys);
-	move_spirte_warren(sys);
-	move_spirte_woman_1(sys);
-	move_spirte_woman_2(sys);
+	move_sprite_pata(sys);
+	move_sprite_warren(sys);
+	move_sprite_woman_1(sys);
+	move_sprite_woman_2(sys);
+	move_sprite_warren_z(sys);
+	move_sprite_warren_q(sys);
+	move_sprite_warren_s(sys);
 	sfClock_restart(sys->clock);
 }
 
@@ -38,6 +44,9 @@ void init_window(win_t *sys)
 {
 	sfVideoMode mode = {1980, 1080, 32};
 	sys->clock = sfClock_create();
+	sys->music_warren = sfMusic_createFromFile("assets/music/warren.ogg");
+	sys->music_warren_second = sfMusic_createFromFile("assets/music/warren_second.ogg");
+	sys->music_pata = sfMusic_createFromFile("assets/music/pata.ogg");
 	sys->music = sfMusic_createFromFile("assets/music/final.wav");
 	sys->win = sfRenderWindow_create(mode, "MyHunter", sfResize | sfClose, NULL);
 	sys->sprite = malloc(sizeof(sprite_t));
@@ -48,6 +57,8 @@ void init_window(win_t *sys)
 	init_sprite_chracters(sys);
 	init_sprite_dial(sys);
 	init_rect(sys);
+	sys->key = 5;
+	sys->score = 0;
 }
 
 void my_window(win_t *sys)
@@ -56,15 +67,17 @@ void my_window(win_t *sys)
 	sfMusic_play(sys->music);
 	sfRenderWindow_setMouseCursorVisible(sys->win, sfFalse);
 	while (sfRenderWindow_isOpen(sys->win)) {
-		// if (sys->rect->life.top == 0)
-		// 	my_end_story(sys);
+		my_begin_story(sys);
+		analyse_events(sys);
 		sys->time = sfClock_getElapsedTime(sys->clock);
 		sys->seconds = sys->time.microseconds / 1000000.0;
+		if (sys->rect->life.top != 0)
+			sfrender_system(sys);
+		else
+			my_end_story(sys);
 		if (sys->seconds > 0.05)
 			my_clock(sys);
-		//sfRenderWindow_clear(sys->win, sfBlack);
-		sfrender_system(sys);
-		analyse_events(sys);
+		sfRenderWindow_clear(sys->win, sfBlack);
 	}
 }
 

@@ -27,6 +27,9 @@ void sfrender_chracters(win_t *sys)
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->pata, NULL);
 	sfSprite_setTextureRect(sys->sprite->pata, sys->rect->pata);
 	sfSprite_setPosition(sys->sprite->pata, sys->pos->pata);
+	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren_s, NULL);
+	sfSprite_setTextureRect(sys->sprite->warren_s, sys->rect->warren_s);
+	sfSprite_setPosition(sys->sprite->warren_s, sys->pos->warren_s);
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren, NULL);
 	sfSprite_setTextureRect(sys->sprite->warren, sys->rect->warren);
 	sfSprite_setPosition(sys->sprite->warren, sys->pos->warren);
@@ -36,6 +39,14 @@ void sfrender_chracters(win_t *sys)
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->woman_2, NULL);
 	sfSprite_setTextureRect(sys->sprite->woman_2, sys->rect->woman_2);
 	sfSprite_setPosition(sys->sprite->woman_2, sys->pos->woman_2);
+	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren_z, NULL);
+	sfSprite_setTextureRect(sys->sprite->warren_z, sys->rect->warren_z);
+	sfSprite_setPosition(sys->sprite->warren_z, sys->pos->warren_z);
+	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren_q, NULL);
+	sfSprite_setTextureRect(sys->sprite->warren_q, sys->rect->warren_q);
+	sfSprite_setPosition(sys->sprite->warren_q, sys->pos->warren_q);
+
+
 }
 
 void sfrender_system(win_t *sys)
