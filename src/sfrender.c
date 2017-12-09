@@ -9,6 +9,9 @@
 
 void sfrender_HUD(win_t *sys)
 {
+	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren_q, NULL);
+	sfSprite_setTextureRect(sys->sprite->warren_q, sys->rect->warren_q);
+	sfSprite_setPosition(sys->sprite->warren_q, sys->pos->warren_q);
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->bar, NULL);
 	sfSprite_setPosition(sys->sprite->bar, sys->pos->bar);
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->HUD_warren, NULL);
@@ -42,11 +45,6 @@ void sfrender_chracters(win_t *sys)
 	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren_z, NULL);
 	sfSprite_setTextureRect(sys->sprite->warren_z, sys->rect->warren_z);
 	sfSprite_setPosition(sys->sprite->warren_z, sys->pos->warren_z);
-	sfRenderWindow_drawSprite(sys->win, sys->sprite->warren_q, NULL);
-	sfSprite_setTextureRect(sys->sprite->warren_q, sys->rect->warren_q);
-	sfSprite_setPosition(sys->sprite->warren_q, sys->pos->warren_q);
-
-
 }
 
 void sfrender_system(win_t *sys)

@@ -12,9 +12,10 @@ CFLAGS	+=	-I include/ -lc_graph_prog -lm
 
 CFLAGST	=	-lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system
 
-SRC	=	src/my_hunter.c		\
+SRC	=	src/main.c		\
 		src/init_system.c	\
-		src/move_sprite.c	\
+		src/move_ennemys.c	\
+		src/move_warren.c	\
 		src/init_sprite.c	\
 		src/sfrender.c		\
 		src/story.c		\
@@ -26,7 +27,8 @@ SRC	=	src/my_hunter.c		\
 		src/init_sprite_dial.c	\
 		src/analyse_events.c	\
 		src/init_rects.c	\
-		src/hitbox.c
+		src/hitbox_ennemys.c	\
+		src/hitbox_warren.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -46,6 +48,8 @@ fclean: clean
 
 re: fclean all
 
-test: $(OBJ)
+htn: $(OBJ)
 	$(CC) $(OBJ) $(CFLAGST) -o $(NAME)
 	rm -f $(OBJ)
+	clear
+	./my_hunter
