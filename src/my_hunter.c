@@ -23,7 +23,8 @@ void init_window(win_t *sys)
 {
 	sfVideoMode mode = {1980, 1080, 32};
 	sys->clock = sfClock_create();
-	sys->music_warren = sfMusic_createFromFile("assets/music/warren.ogg");
+	sys->music_warren =
+	sfMusic_createFromFile("assets/music/warren.ogg");
 	sys->music_warren_second =
 	sfMusic_createFromFile("assets/music/warren_second.ogg");
 	sys->music_pata = sfMusic_createFromFile("assets/music/pata.ogg");
@@ -68,16 +69,16 @@ int main(int ac, char **av)
 
 	if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h') {
 		my_putstr("The goal of the game is to kill all the bad ");
-		my_putstr("guys!\nWARNING ! Do not kill little Warren...\n");
-		my_putstr("Everything will be explained at the beginning!\n");
-		my_putstr("You have 6 lifes, ");
-		my_putstr("if one of the bad guys cross the screen or if ");
-		my_putstr("you kill a little warren, you will lose a life\n");
+		my_putstr("guys!\nWARNING ! Do not kill little");
+		my_putstr(" Warren...\nEverything will be explained at");
+		my_putstr(" the beginning!\nYou have 6 lifes, if one of");
+		my_putstr(" the bad guys cross the screen or if you ");
+		my_putstr("kill a little warren, you will lose a life\n");
 		return (0);
 	}
 	else if (ac >= 2) {
-		my_putstr("You must type './my_hunter' for start the game\n");
-		my_putstr("If you need more informations ");
+		my_putstr("You must type './my_hunter' for start");
+		my_putstr(" the game\nIf you need more informations ");
 		my_putstr("type './my_hunter -h'\n");
 		return (84);
 	}

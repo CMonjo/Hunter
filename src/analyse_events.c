@@ -26,7 +26,7 @@ void analyse_events(win_t *sys)
 		if (sys->event.type == sfEvtClosed) {
 			sfRenderWindow_close(sys->win);
 			my_score_end(sys);
-			my_destroy(sys);
+			destroy_win(sys);
 		}
 		if (sys->event.type == sfEvtMouseMoved) {
 			sys->pos->mouse.x = sys->event.mouseMove.x - 21;
