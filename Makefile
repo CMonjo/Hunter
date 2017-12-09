@@ -22,6 +22,8 @@ SRC	=	src/my_hunter.c		\
 		src/my_putchar.c	\
 		src/life_management.c	\
 		src/my_put_nbr.c	\
+		src/analyse_events.c	\
+		src/init_rects.c	\
 		src/hitbox.c
 
 OBJ	=	$(SRC:.c=.o)

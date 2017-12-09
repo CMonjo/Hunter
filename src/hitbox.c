@@ -58,7 +58,7 @@ void hitbox_woman_1(win_t *sys)
 		sys->pos->mouse.x >= sys->pos->woman_1.x - 10) {
 		if (sys->pos->mouse.y <= sys->pos->woman_1.y + 107 &&
 			sys->pos->mouse.y >= sys->pos->woman_1.y - 20) {
-			sfMusic_play(sys->music_pata);
+			sfMusic_play(sys->music_warren_second);
 			sys->score = sys->score + 1;
 			sys->pos->woman_1.x = 1900;
 			sys->rect->HUD_warren.left = sys->rect->max_HUD_warren
@@ -88,7 +88,7 @@ void hitbox_woman_2(win_t *sys)
 		sys->pos->mouse.x >= sys->pos->woman_2.x - 10) {
 		if (sys->pos->mouse.y <= sys->pos->woman_2.y + 107
 			&& sys->pos->mouse.y >= sys->pos->woman_2.y - 20) {
-			sfMusic_play(sys->music_pata);
+			sfMusic_play(sys->music_warren);
 			sys->score = sys->score + 1;
 			sys->pos->woman_2.y = 1100;
 			sys->rect->HUD_warren.left = sys->rect->max_HUD_warren
@@ -103,7 +103,7 @@ void hitbox_warren_z(win_t *sys)
 		sys->pos->mouse.x >= sys->pos->warren_z.x - 10) {
 		if (sys->pos->mouse.y <= sys->pos->warren_z.y + 107
 			&& sys->pos->mouse.y >= sys->pos->warren_z.y - 20) {
-			sfMusic_play(sys->music_warren);
+			sfMusic_play(sys->music_pata);
 			my_life_first(sys);
 			sys->pos->warren_z.y = 1100;
 			sys->rect->HUD_warren.left = sys->rect->max_HUD_warren

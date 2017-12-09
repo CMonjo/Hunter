@@ -2,34 +2,10 @@
 ** EPITECH PROJECT, 2017
 ** CSFML MyHunter
 ** File description:
-** Bootstrap
+** Main file
 */
 
 #include "hunter.h"
-
-void analyse_events(win_t *sys)
-{
-	while (sfRenderWindow_pollEvent(sys->win, &(sys->event))) {
-		if (sys->event.type == sfEvtClosed) {
-			sfRenderWindow_close(sys->win);
-			my_score_end(sys);
-			my_destroy(sys);
-		}
-		if (sys->event.type == sfEvtMouseButtonPressed) {
-			hitbox_pata(sys);
-			hitbox_warren(sys);
-			hitbox_woman_1(sys);
-			hitbox_woman_2(sys);
-			hitbox_warren_s(sys);
-			hitbox_warren_q(sys);
-			hitbox_warren_z(sys);
-		}
-		if (sys->event.type == sfEvtMouseMoved) {
-			sys->pos->mouse.x = sys->event.mouseMove.x - 21;
-			sys->pos->mouse.y = sys->event.mouseMove.y - 21;
-		}
-	}
-}
 
 void my_clock(win_t *sys)
 {
@@ -52,13 +28,14 @@ void init_window(win_t *sys)
 	sfMusic_createFromFile("assets/music/warren_second.ogg");
 	sys->music_pata = sfMusic_createFromFile("assets/music/pata.ogg");
 	sys->music = sfMusic_createFromFile("assets/music/final.wav");
-	sys->win = sfRenderWindow_create(mode, "MyHunter", sfResize | sfClose, NULL);
+	sys->win =
+	sfRenderWindow_create(mode, "MyHunter", sfResize | sfClose, NULL);
 	sys->sprite = malloc(sizeof(sprite_t));
 	sys->texture = malloc(sizeof(texture_t));
 	sys->pos = malloc(sizeof(position_t));
 	sys->rect = malloc(sizeof(rect_t));
 	init_sprite_system(sys);
-	init_sprite_chracters(sys);
+	init_sprite_chracters_ennemys(sys);
 	init_sprite_dial(sys);
 	init_rect(sys);
 	sys->key = 5;

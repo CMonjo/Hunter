@@ -107,7 +107,7 @@ void my_end_story_option(win_t *sys)
 			sys->key = 1;
 			sys->rect->life.top = 343;
 		}
-		if (sfKeyboard_isKeyPressed(sfKeySpace)) {
+		if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
 			my_destroy(sys);
 			my_score_end(sys);
 			exit (0);
@@ -123,7 +123,7 @@ void my_end_story_second(win_t *sys)
 		sfSprite_setPosition(sys->sprite->dial_universe, sys->pos->dial_universe);
 		sfRenderWindow_drawSprite(sys->win, sys->sprite->dial_universe, NULL);
 		sfRenderWindow_display(sys->win);
-		if (sfKeyboard_isKeyPressed(sfKeyReturn))
+		if (sfKeyboard_isKeyPressed(sfKeySpace))
 			sys->key = 3;
 	}
 	if (sys->key == 3)
@@ -138,7 +138,7 @@ void my_end_story(win_t *sys)
 		sfSprite_setPosition(sys->sprite->dial_pata, sys->pos->dial_pata);
 		sfRenderWindow_drawSprite(sys->win, sys->sprite->dial_pata, NULL);
 		sfRenderWindow_display(sys->win);
-		if (sfKeyboard_isKeyPressed(sfKeySpace))
+		if (sfKeyboard_isKeyPressed(sfKeyReturn))
 			sys->key = 2;
 	}
 	if (sys->key == 2)

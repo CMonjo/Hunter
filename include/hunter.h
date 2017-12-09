@@ -34,7 +34,11 @@ void init_sprite_dial(win_t *sys);
 void init_sprite_system(win_t *sys);
 void init_rect(win_t *sys);
 void init_rect_second(win_t *sys);
-void init_sprite_chracters(win_t *sys);
+void init_rect_third(win_t *sys);
+void init_sprite_chracters_ennemys(win_t *sys);
+void init_sprite_chracters_ennemys_second(win_t *sys);
+void init_sprite_chracters_allies(win_t *sys);
+void init_sprite_chracters_allies_second(win_t *sys);
 void my_clock(win_t *sys);
 void sfrender_chracters(win_t *sys);
 void sfrender_system(win_t *sys);
@@ -59,4 +63,5 @@ void my_begin_story(win_t *sys);
 int my_begin_end_story(win_t *sys);
 int my_put_nbr(int nb);
 void my_score_end(win_t *sys);
+void analyse_events_hitbox(win_t *sys);
 #endif
