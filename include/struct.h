@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** struct.h
+** CSFML MyHunter
 ** File description:
-** struct declaration file
+** Struct file
 */
 
 #ifndef STRUCT_H_
@@ -30,7 +30,7 @@ typedef struct sprite_s {
 	sfSprite *dial_universe;
 	sfSprite *dial_lost;
 	sfSprite *bg_menu;
-}sprite_t;
+} sprite_t;
 
 typedef struct texture_s {
 	sfTexture *background;
@@ -72,7 +72,7 @@ typedef struct rect_s {
 	int max_warren_s;
 	int max_warren_q;
 	int max_HUD_warren;
-}rect_t;
+} rect_t;
 
 typedef struct position_s {
 	sfVector2f bar;
@@ -94,7 +94,7 @@ typedef struct position_s {
 	sfVector2f dial_pata;
 	sfVector2f dial_universe;
 	sfVector2f dial_lost;
-}position_t;
+} position_t;
 
 typedef struct win_s {
 	sfRenderWindow* win;
@@ -112,6 +112,6 @@ typedef struct win_s {
 	texture_t *texture;
 	position_t *pos;
 	rect_t *rect;
-}win_t;
+} win_t;
 
 #endif

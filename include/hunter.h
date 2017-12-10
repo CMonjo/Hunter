@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** CSFML MyHunter
 ** File description:
-** Bootstrap
+** Includes
 */
 
 
