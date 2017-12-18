@@ -7,7 +7,7 @@
 
 #include "hunter.h"
 
-void my_end_story_option(win_t *sys)
+int my_end_story_option(win_t *sys)
 {
 	while (sys->key == 3) {
 		sfRenderWindow_clear(sys->win, sfBlack);
@@ -25,12 +25,13 @@ void my_end_story_option(win_t *sys)
 		if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
 			destroy_win(sys);
 			my_score_end(sys);
-			exit (0);
+			return (0);
 		}
 	}
+	return (0);
 }
 
-void my_end_story_second(win_t *sys)
+int my_end_story_second(win_t *sys)
 {
 	while (sys->key == 2) {
 		sfRenderWindow_clear(sys->win, sfBlack);
@@ -46,9 +47,10 @@ void my_end_story_second(win_t *sys)
 	}
 	if (sys->key == 3)
 		my_end_story_option(sys);
+	return (0);
 }
 
-void my_end_story(win_t *sys)
+int my_end_story(win_t *sys)
 {
 	while (sys->key == 1) {
 		sfRenderWindow_clear(sys->win, sfBlack);
@@ -64,6 +66,7 @@ void my_end_story(win_t *sys)
 	}
 	if (sys->key == 2)
 		my_end_story_second(sys);
+	return (0);
 }
 
 int my_begin_end_story(win_t *sys)
