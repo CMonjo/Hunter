@@ -7,10 +7,9 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -W -Werror
-CFLAGS	+=	-I include/ -lc_graph_prog -lm
+CFLAGS	=	-Wall -Wextra -W -I include/ -lc_graph_prog
 
-CFLAGST	=	-lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-system
+CFLAGST	=	-Wall -Wextra -W -I include/ -lcsfml-graphics -lcsfml-system -lcsfml-audio -lcsfml-window
 
 SRC	=	src/main.c		\
 		src/init_system.c	\
@@ -40,6 +39,10 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 	rm -f $(OBJ)
 
+htn: $(OBJ)
+	$(CC) $(OBJ) $(CFLAGST) -o $(NAME)
+	rm -f $(OBJ)
+
 clean:
 	rm -f $(OBJ)
 
@@ -47,9 +50,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-htn: $(OBJ)
-	$(CC) $(OBJ) $(CFLAGST) -o $(NAME)
-	rm -f $(OBJ)
-	clear
-	./my_hunter

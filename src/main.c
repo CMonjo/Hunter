@@ -61,6 +61,7 @@ void my_window(win_t *sys)
 		analyse_events(sys);
 		sfRenderWindow_clear(sys->win, sfBlack);
 	}
+	destroy_win(sys);
 }
 
 int main(int ac, char **av)
