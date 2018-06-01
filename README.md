@@ -18,7 +18,7 @@ Navigate to the root of the repository from your Terminal and run make to build 
 
 ./my_hunter
 
-for more informations about builtins, type ./my_hunter -h.
+for more informations about the game, type ./my_hunter -h.
 
 ## Author
 
